@@ -208,13 +208,25 @@ function [video, user] = importVideos(video, sim, user, video_allocation)
         switch video_id
             case 1
                 file_path_video = strcat(pwd, '/videos/chairliftride.csv');
-                file_path_delta_psnr = strcat(pwd, '/delta-psnr/chairliftride.csv');
+                if sim.scenario == "viewport_only_modified"
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/chairliftride_viewport_only_modified.csv');
+                else
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/chairliftride.csv');
+                end  
             case 2
                 file_path_video = strcat(pwd, '/videos/skateboardinlot.csv');
-                file_path_delta_psnr = strcat(pwd, '/delta-psnr/skateboardinlot.csv');
+                if sim.scenario == "viewport_only_modified"
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/skateboardinlot_viewport_only_modified.csv');
+                else
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/skateboardinlot.csv');
+                end
             case 3
                 file_path_video = strcat(pwd, '/videos/kiteflite.csv');
-                file_path_delta_psnr = strcat(pwd, '/delta-psnr/kiteflite.csv');
+                if sim.scenario == "viewport_only_modified"
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/kiteflite_viewport_only_modified.csv');
+                else
+                    file_path_delta_psnr = strcat(pwd, '/delta-psnr/kiteflite.csv');
+                end
         end
 
         % import video csv
@@ -242,7 +254,7 @@ function [video, user] = importVideos(video, sim, user, video_allocation)
         video(video_id).delta_psnr = data.(sim.scenario)';
         
         % interpolate values for 1 degree intervals
-        video(video_id).delta_psnr = interp1(video(video_id).angle, video(video_id).delta_psnr, -180:180, 'spline');
+        video(video_id).delta_psnr = interp1(video(video_id).angle, video(video_id).delta_psnr, -180:180, 'pchip');
         video(video_id).angle = -180:180;
         
         % normalize delta psnr values
@@ -535,7 +547,8 @@ function [user, adjusted_qualities] = calculateAdjustedQuality(user, video, sim,
         adjusted_qualities(user_id) = adjusted_quality;
     
         % if viewport is not sufficiently covered by an image in tiles_partial or viewport_only, it counts as a stall
-        if ((angular_difference < -50 || angular_difference > 50) && sim.scenario == "tiles_partial") || ((angular_difference < -10 || angular_difference > 10) && sim.scenario == "viewport_only") || ((angular_difference < -20 || angular_difference > 20) && sim.scenario == "viewport_only_modified")
+        %%%% if ((angular_difference < -50 || angular_difference > 50) && sim.scenario == "tiles_partial") || ((angular_difference < -10 || angular_difference > 10) && sim.scenario == "viewport_only") || ((angular_difference < -20 || angular_difference > 20) && sim.scenario == "viewport_only_modified")
+        if ((angular_difference < -50 || angular_difference > 50) && sim.scenario == "tiles_partial") || ((angular_difference < -10 || angular_difference > 10) && sim.scenario == "viewport_only") || ((angular_difference < -15 || angular_difference > 15) && sim.scenario == "viewport_only_modified")
             if user(user_id).empty_viewport == false
                 user(user_id).nr_empty_viewport_events = user(user_id).nr_empty_viewport_events + 1;
                 user(user_id).empty_viewport = true;
