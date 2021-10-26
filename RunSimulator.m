@@ -3,89 +3,65 @@ rng shuffle
 rand_stream = rng;
 
 %%%%%%%%%%%%%%%%%% INPUT PARAMETERS %%%%%%%%%%%%%%%%%%%
-% parameters(1).latency = 10; % request-response latency - in ms (fixed value)
-% parameters(1).scenario = 'monolithic'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(1).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(1).buffer_request_threshold = 6000; % buffer level that triggers a new request - in ms
-% parameters(1).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(2).latency = 1; % request-response latency - in ms (fixed value)
-% parameters(2).scenario = 'monolithic'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(2).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(2).buffer_request_threshold = 6000; % buffer level that triggers a new request - in ms
-% parameters(2).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(3).latency = 10; % request-response latency - in ms (fixed value)
-% parameters(3).scenario = 'tiles'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(3).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(3).buffer_request_threshold = [50 100 300 500 700 900 1000 2000 3000 4000 6000]; % buffer level that triggers a new request - in ms
-% parameters(3).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(4).latency = 1; % request-response latency - in ms (fixed value)
-% parameters(4).scenario = 'tiles'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(4).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(4).buffer_request_threshold = [50 100 300 500 700 900 1000 2000 3000 4000 6000]; % buffer level that triggers a new request - in ms
-% parameters(4).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(5).latency = 10; % request-response latency - in ms (fixed value)
-% parameters(5).scenario = 'tiles_partial'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(5).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(5).buffer_request_threshold = [50 100 300 500 700 900 1000 6000]; % buffer level that triggers a new request - in ms
-% parameters(5).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(6).latency = 1; % request-response latency - in ms (fixed value)
-% parameters(6).scenario = 'tiles_partial'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(6).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(6).buffer_request_threshold = [50 100 300 500 700 900 1000 6000]; % buffer level that triggers a new request - in ms
-% parameters(6).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(7).latency = 10; % request-response latency - in ms (fixed value)
-% parameters(7).scenario = 'viewport_only'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(7).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(7).buffer_request_threshold = [1 2 3 4 5 10 15 20 30 40]; % buffer level that triggers a new request - in ms
-% parameters(7).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(8).latency = 1; % request-response latency - in ms (fixed value)
-% parameters(8).scenario = 'viewport_only'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(8).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-% parameters(8).buffer_request_threshold = [1 2 3 4 5 10 15 20 30 40]; % buffer level that triggers a new request - in ms
-% parameters(8).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(9).latency = 10; % request-response latency - in ms (fixed value)
-% parameters(9).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(9).nr_users = [1 10 20 30 40 50 60 70 80 90 100 120 140 160]; % number of users
-% parameters(9).buffer_request_threshold = [15 20]; % buffer level that triggers a new request - in ms
-% parameters(9).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-% 
-% parameters(10).latency = 1; % request-response latency - in ms (fixed value)
-% parameters(10).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-% parameters(10).nr_users = [1 10 20 30 40 50 60 70 80 90 100 120 140 160]; % number of users
-% parameters(10).buffer_request_threshold = [3 4 5]; % buffer level that triggers a new request - in ms
-% parameters(10).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
-
 parameters(1).latency = 10; % request-response latency - in ms (fixed value)
-parameters(1).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-parameters(1).nr_users = [1 10 20 30 40 50 60 70 80 90 100 120 140 160]; % number of users
-parameters(1).buffer_request_threshold = [15 20]; % buffer level that triggers a new request - in ms
+parameters(1).scenario = 'monolithic'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(1).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
+parameters(1).buffer_request_threshold = 6000; % buffer level that triggers a new request - in ms
 parameters(1).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
 
 parameters(2).latency = 1; % request-response latency - in ms (fixed value)
-parameters(2).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
-parameters(2).nr_users = [1 10 20 30 40 50 60 70 80 90 100 120 140 160]; % number of users
-parameters(2).buffer_request_threshold = [3 4 5]; % buffer level that triggers a new request - in ms
+parameters(2).scenario = 'monolithic'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(2).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
+parameters(2).buffer_request_threshold = 6000; % buffer level that triggers a new request - in ms
 parameters(2).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
 
 parameters(3).latency = 10; % request-response latency - in ms (fixed value)
 parameters(3).scenario = 'tiles'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
 parameters(3).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-parameters(3).buffer_request_threshold = [2000 3000 4000]; % buffer level that triggers a new request - in ms
+parameters(3).buffer_request_threshold = [50 100 300 500 700 900 1000 2000 3000 4000 6000]; % buffer level that triggers a new request - in ms
 parameters(3).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
 
-parameters(4).latency = 10; % request-response latency - in ms (fixed value)
+parameters(4).latency = 1; % request-response latency - in ms (fixed value)
 parameters(4).scenario = 'tiles'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
 parameters(4).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
-parameters(4).buffer_request_threshold = [2000 3000 4000]; % buffer level that triggers a new request - in ms
+parameters(4).buffer_request_threshold = [50 100 300 500 700 900 1000 2000 3000 4000 6000]; % buffer level that triggers a new request - in ms
 parameters(4).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(5).latency = 10; % request-response latency - in ms (fixed value)
+parameters(5).scenario = 'tiles_partial'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(5).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
+parameters(5).buffer_request_threshold = [50 100 300 500 700 900 1000 6000]; % buffer level that triggers a new request - in ms
+parameters(5).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(6).latency = 1; % request-response latency - in ms (fixed value)
+parameters(6).scenario = 'tiles_partial'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(6).nr_users = [1 10 20 30 40 50 60 70 80 90 100]; % number of users
+parameters(6).buffer_request_threshold = [50 100 300 500 700 900 1000 6000]; % buffer level that triggers a new request - in ms
+parameters(6).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(7).latency = 10; % request-response latency - in ms (fixed value)
+parameters(7).scenario = 'viewport_only'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(7).nr_users = [1 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200]; % number of users
+parameters(7).buffer_request_threshold = [1 2 3 4 5 10 15 20 30 40]; % buffer level that triggers a new request - in ms
+parameters(7).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(8).latency = 1; % request-response latency - in ms (fixed value)
+parameters(8).scenario = 'viewport_only'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(8).nr_users = [1 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200]; % number of users
+parameters(8).buffer_request_threshold = [1 2 3 4 5 10 15 20 30 40]; % buffer level that triggers a new request - in ms
+parameters(8).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(9).latency = 10; % request-response latency - in ms (fixed value)
+parameters(9).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(9).nr_users = [1 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200]; % number of users
+parameters(9).buffer_request_threshold = [15 20]; % buffer level that triggers a new request - in ms
+parameters(9).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
+
+parameters(10).latency = 1; % request-response latency - in ms (fixed value)
+parameters(10).scenario = 'viewport_only_modified'; % simulation scenario - monolithic, tiles, tiles_partial, viewport_only
+parameters(10).nr_users = [1 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200]; % number of users
+parameters(10).buffer_request_threshold = [3 4 5]; % buffer level that triggers a new request - in ms
+parameters(10).debug_mode = false; % if true, calculate the cumulative QoE and other metric every TTI and plot the graphs, but simulations run slower
 
 %%%%%%%%%%%%%%% MONTE CARLO PARAMETERS %%%%%%%%%%%%%%%%
 mc.nr_monte_carlo_sims = 24;
@@ -138,6 +114,7 @@ end
 
 function allocations = runAllocationAlgorithms(mc, parameters)
     max_users = max(parameters(1).nr_users);
+    
     for i = 1:length(parameters)
         if max(parameters(i).nr_users) > max_users
             max_users = max(parameters(i).nr_users);
